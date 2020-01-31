@@ -2,8 +2,8 @@ package les6.Practicum6A;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
     private Game game1JrOud;
@@ -19,31 +19,32 @@ class GameTest {
     @Test
     public void testHuidigeWaardeNwPrijsNa0Jr(){
         Game game0JrOud = new Game("Mario Kart", ditJaar, 50.0);
-        assertEquals(50.0, game0JrOud.huidigeWaarde(), "Huidige waarde na 0 jr niet correct.");
+        assertEquals(50.0, Math.round(game0JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde na 0 jr niet correct.");
     }
 
     @Test
     public void testHuidigeWaardeNwPrijsNa1Jr(){
-        assertEquals(35.0, game1JrOud.huidigeWaarde(), "Huidige waarde na 1 jr niet correct.");
+        assertEquals(35.0, Math.round(game1JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde na 1 jr niet correct.");
     }
 
     @Test
     public void testHuidigeWaardeNwPrijsNa5Jr(){
         Game game5JrOud = new Game("Mario Kart", ditJaar-5, 50.0);
-        assertEquals(8.4, game5JrOud.huidigeWaarde(), "Huidige waarde na 5 jr niet correct.");
+        assertEquals(8.4, Math.round(game5JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde na 5 jr niet correct.");
     }
 
     @Test
     public void testHuidigeWaardeGratisGameNa0Jr(){
         Game gratisGame0JrOud = new Game("Mario Kart Free", ditJaar, 0.0);
-        assertEquals(0.0, gratisGame0JrOud.huidigeWaarde(), "Huidige waarde gratis game na 0 jr niet correct.");
+        assertEquals(0.0, Math.round(gratisGame0JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde gratis game na 0 jr niet correct.");
     }
 
     @Test
     public void testHuidigeWaardeGratisGameNa5Jr(){
         Game gratisGame5JrOud = new Game("Mario Kart Free", ditJaar-5, 0.0);
-        assertEquals(0.0, gratisGame5JrOud.huidigeWaarde(), "Huidige waarde gratis game na 5 jr niet correct.");
+        assertEquals(0.0, Math.round(gratisGame5JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde gratis game na 5 jr niet correct.");
     }
+
     //endregion
 
     //region Tests met equals()

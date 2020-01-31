@@ -89,7 +89,7 @@ class PersoonTest {
     @Test
     public void testBudgetKoopGameNieuwVoldoendeBudget(){
         boolean gelukt = koper.koop(game1);
-        assertEquals(150.0, koper.getBudget(), "koop() levert niet het goede budget op.");
+        assertEquals(150.0, Math.round(koper.getBudget() * 100)/100d, "koop() levert niet het goede budget op.");
     }
 
     @Test
@@ -108,7 +108,7 @@ class PersoonTest {
     @Test
     public void testBudgetKoopGameNieuwOnvoldoendeBudget(){
         boolean gelukt = koperArm.koop(game1);
-        assertEquals(36.0, koperArm.getBudget(), "koop() levert niet het goede budget op.");
+        assertEquals(36.0, Math.round(koperArm.getBudget() * 100)/100d, "koop() levert niet het goede budget op.");
     }
 
     @Test
@@ -129,7 +129,7 @@ class PersoonTest {
     public void testBudgetKoopDubbeleGameVoldoendeBudget(){
         boolean gelukt = koper.koop(game1);
         gelukt = koper.koop(game1);
-        assertEquals(150.0, koper.getBudget(), "koop() levert niet het goede budget op (game is al in bezit)");
+        assertEquals(150.0, Math.round(koper.getBudget() * 100)/100d, "koop() levert niet het goede budget op (game is al in bezit)");
     }
 
     @Test
@@ -151,7 +151,7 @@ class PersoonTest {
     public void testBudgetKoopDubbeleGameOnvoldoendeBudget(){
         boolean gelukt = koperArm.koop(game2);
         gelukt = koperArm.koop(game2);
-        assertEquals(1.00, koperArm.getBudget(), "koop() levert niet het goede budget op (game is al in bezit).");
+        assertEquals(1.00, Math.round(koperArm.getBudget() * 100)/100d, "koop() levert niet het goede budget op (game is al in bezit).");
     }
 
     @Test
@@ -173,8 +173,8 @@ class PersoonTest {
     @Test
     public void testBudgetVerkoopGeenBezitVerkoper(){
         boolean gelukt = verkoper.verkoop(game1, koper);
-        assertEquals(60, verkoper.getBudget(),"verkoop() levert niet het goede budget van de verkoper op (Game is niet in bezit verkoper).");
-        assertEquals(200, koper.getBudget(),"verkoop() levert niet het goede budget van de koper op (Game is niet in bezit verkoper).");
+        assertEquals(60, Math.round(verkoper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de verkoper op (Game is niet in bezit verkoper).");
+        assertEquals(200, Math.round(koper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de koper op (Game is niet in bezit verkoper).");
     }
 
     @Test
@@ -197,8 +197,8 @@ class PersoonTest {
     public void testBudgetVerkoopKoperOnvoldoendeBudget(){
         verkoper.koop(game1);
         boolean gelukt = verkoper.verkoop(game1, koperArm);
-        assertEquals(10, verkoper.getBudget(),"verkoop() levert niet het goede budget van de verkoper op (game is niet verkocht).");
-        assertEquals(36, koperArm.getBudget(),"verkoop() levert niet het goede budget van de koper op (game is niet verkocht).");
+        assertEquals(10, Math.round(verkoper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de verkoper op (game is niet verkocht).");
+        assertEquals(36, Math.round(koperArm.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de koper op (game is niet verkocht).");
     }
 
     @Test
@@ -223,8 +223,8 @@ class PersoonTest {
     public void testBudgetVerkoopKoperDubbeleGame(){
         verkoper.koop(game2);
         koper.koop(game2);
-        assertEquals(25, verkoper.getBudget(),"verkoop() levert niet het goede budget van de verkoper op (game is niet verkocht).");
-        assertEquals(165, koper.getBudget(),"verkoop() levert niet het goede budget van de koper op (game is niet verkocht).");
+        assertEquals(25, Math.round(verkoper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de verkoper op (game is niet verkocht).");
+        assertEquals(165, Math.round(koper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de koper op (game is niet verkocht).");
     }
 
     @Test
@@ -248,8 +248,8 @@ class PersoonTest {
     public void testBudgetVerkoopVoorwaardenOK(){
         verkoper.koop(game2);
         boolean gelukt = verkoper.verkoop(game2, koper);
-        assertEquals(60, verkoper.getBudget(),"verkoop() levert niet het goede budget van de verkoper op (game is verkocht).");
-        assertEquals(165, koper.getBudget(),"verkoop() levert niet het goede budget van de koper op (game is verkocht).");
+        assertEquals(60, Math.round(verkoper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de verkoper op (game is verkocht).");
+        assertEquals(165, Math.round(koper.getBudget() * 100)/100d,"verkoop() levert niet het goede budget van de koper op (game is verkocht).");
     }
 
     @Test
