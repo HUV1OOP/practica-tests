@@ -96,4 +96,9 @@ class GameTest {
                 game1JrOud.toString(), "toString() geeft niet de juiste tekst terug.");
     }
 
+    @Test
+    public void testHuidigeWaardeVerandertNieuwePrijsNiet() {
+        assertEquals(35.0, Math.round(game1JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde na 1 jr niet correct.");
+        assertEquals(35.0, Math.round(game1JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde verandert na huidgeWaarden() aanroepen");
+    }
 }
