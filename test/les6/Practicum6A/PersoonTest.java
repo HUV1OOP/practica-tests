@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,6 +29,7 @@ class PersoonTest {
 
     @BeforeEach
     public void init(){
+        Locale.setDefault(new Locale("NL"));
         ditJaar = LocalDate.now().getYear();
         koper = new Persoon("Eric de Koper",200.0);
         koperArm = new Persoon("Hans",36.0);

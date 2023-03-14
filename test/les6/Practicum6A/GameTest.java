@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Locale;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
@@ -12,6 +14,7 @@ class GameTest {
 
     @BeforeEach
     public void init(){
+        Locale.setDefault(new Locale("NL"));
         ditJaar = LocalDate.now().getYear();
         game1JrOud = new Game("Mario Kart", ditJaar-1, 50.0);
     }
@@ -96,4 +99,9 @@ class GameTest {
                 game1JrOud.toString(), "toString() geeft niet de juiste tekst terug.");
     }
 
+    @Test
+    public void testHuidigeWaardeVerandertNieuwePrijsNiet() {
+        assertEquals(35.0, Math.round(game1JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde na 1 jr niet correct.");
+        assertEquals(35.0, Math.round(game1JrOud.huidigeWaarde() * 100)/100d, "Huidige waarde verandert na huidgeWaarden() aanroepen");
+    }
 }
